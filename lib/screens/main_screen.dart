@@ -11,23 +11,12 @@ class _MainScreenState extends State<MainScreen> {
   double cHeight;
   CalendarCarousel _calendarCarouselNoHeader;
 
-  static Widget _eventIcon = new Container(
-    decoration: new BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(1000)),
-        border: Border.all(color: Colors.blue, width: 2.0)),
-    child: new Icon(
-      Icons.person,
-      color: Colors.amber,
-    ),
-  );
-
   EventList<Event> _markedDateMap = new EventList<Event>(events: {
     new DateTime(2020, 3, 10): [
       new Event(
         date: new DateTime(2020, 3, 10),
         title: 'Event 1',
-        icon: _presentIcon(DateTime(2020, 3, 10).day.toString()),
+        icon: _periodMarker(DateTime(2020, 3, 10).day.toString()),
       ),
     ],
   });
@@ -39,22 +28,46 @@ class _MainScreenState extends State<MainScreen> {
         new Event(
           date: new DateTime(2020, 3, 11),
           title: 'mens',
-          icon: _presentIcon(DateTime(2020, 3, 11).day.toString()),
+          icon: _periodMarker(DateTime(2020, 3, 11).day.toString()),
         ));
     _markedDateMap.add(
         new DateTime(2020, 3, 12),
         new Event(
           date: new DateTime(2020, 3, 12),
           title: 'mens',
-          icon: _presentIcon(DateTime(2020, 3, 12).day.toString()),
+          icon: _periodMarker(DateTime(2020, 3, 12).day.toString()),
+        ));
+    _markedDateMap.add(
+        new DateTime(2020, 3, 20),
+        new Event(
+          date: new DateTime(2020, 3, 20),
+          title: 'mens',
+          icon: _ovulationMarker(DateTime(2020, 3, 20).day.toString()),
         ));
 
     super.initState();
   }
 
-  static Widget _presentIcon(String day) => Container(
+  static Widget _periodMarker(String day) => Container(
         decoration: BoxDecoration(
           color: Colors.pink,
+          borderRadius: BorderRadius.all(
+            Radius.circular(1000),
+          ),
+        ),
+        child: Center(
+          child: Text(
+            day,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+
+  static Widget _ovulationMarker(String day) => Container(
+        decoration: BoxDecoration(
+          color: Colors.yellow,
           borderRadius: BorderRadius.all(
             Radius.circular(1000),
           ),
@@ -76,43 +89,46 @@ class _MainScreenState extends State<MainScreen> {
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       height: cHeight * 0.54,
       weekendTextStyle: TextStyle(
-        color: Colors.red,
+        color: Colors.black,
       ),
+      headerTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
       todayButtonColor: Colors.indigo,
       markedDatesMap: _markedDateMap,
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
-      markedDateMoreShowTotal:
-      null, // null for not showing hidden events indicator
+      markedDateMoreShowTotal: null, // null for not showing hidden events indicator
       markedDateIconBuilder: (event) {
         return event.icon;
       },
     );
-
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            _calendarCarouselNoHeader,
-            markerRepresent(Colors.red, "Absent"),
-            markerRepresent(Colors.green, "Present"),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              _calendarCarouselNoHeader,
+              markerRepresent(Colors.pink, "Mens"),
+              markerRepresent(Colors.yellow, "Ovulation"),
+            ],
+          )
+        ],
       ),
     );
   }
 
   Widget markerRepresent(Color color, String data) {
     return new ListTile(
+      dense: true,
       leading: new CircleAvatar(
         backgroundColor: color,
-        radius: cHeight * 0.022,
+        radius: cHeight * 0.018,
       ),
       title: new Text(
         data,
