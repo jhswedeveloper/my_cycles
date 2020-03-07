@@ -43,15 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.dashboard),
             title: Text('Summary'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.account_circle),
             title: Text('Profile'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.settings),
             title: Text('Settings'),
           ),
         ],

@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'My Cycles',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
       home: HomeScreen(),
     );
