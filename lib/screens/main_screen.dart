@@ -91,8 +91,24 @@ class _MainScreenState extends State<MainScreen> {
       weekendTextStyle: TextStyle(
         color: Colors.black,
       ),
+
+      markedDateCustomTextStyle: TextStyle(
+        color: Colors.indigo, // here
+        fontWeight: FontWeight.bold,
+      ),
+
+      /// Header weekday style
       headerTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
-      todayButtonColor: Colors.indigo,
+      weekdayTextStyle: TextStyle(color: Colors.black),
+      inactiveDaysTextStyle: TextStyle(
+        color: Colors.tealAccent,
+        fontSize: 16,
+      ),
+
+      /// Today style
+      todayButtonColor: Colors.grey,
+
+      /// Events marker style
       markedDatesMap: _markedDateMap,
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
