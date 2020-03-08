@@ -79,15 +79,15 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         radius: 120.0,
                         lineWidth: 13.0,
                         animation: true,
-                        percent: 0.7,
+                        percent: 0.2,
                         center: new Text(
-                          "20 DAYS",
+                          "3 DAYS",
                           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                         ),
                         header: Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: new Text(
-                            "Cycle length",
+                            "Period length",
                             style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
                           ),
                         ),
