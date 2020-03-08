@@ -105,13 +105,19 @@ class _LoginScreenState extends State<LoginScreen> {
         TextFormField(
           key: Key('email'),
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(labelText: 'Email'),
+          decoration: InputDecoration(
+            icon: Icon(Icons.person),
+            labelText: 'Email',
+          ),
           validator: EmailFieldValidator.validate,
           onSaved: (String value) => _email = value,
         ),
         TextFormField(
           key: Key('password'),
-          decoration: InputDecoration(labelText: 'Password'),
+          decoration: InputDecoration(
+            icon: Icon(Icons.lock),
+            labelText: 'Password',
+          ),
           obscureText: true,
           validator: PasswordFieldValidator.validate,
           onSaved: (String value) => _password = value,
@@ -122,7 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
         TextFormField(
           key: Key('email'),
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(labelText: 'Email'),
+          decoration: InputDecoration(
+            icon: Icon(Icons.person),
+            labelText: 'Email',
+          ),
           validator: EmailFieldValidator.validate,
           onSaved: (String value) => _email = value,
         ),

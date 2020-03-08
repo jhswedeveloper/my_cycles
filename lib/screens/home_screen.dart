@@ -4,6 +4,7 @@ import 'package:mycycles/screens/main_screen.dart';
 import 'package:mycycles/screens/profile_screen.dart';
 import 'package:mycycles/screens/settings_screen.dart';
 import 'package:mycycles/screens/summary_screen.dart';
+import 'package:mycycles/services/auth_service.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  AuthService authService = AuthService();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,6 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         elevation: 1.0,
         gradient: LinearGradient(colors: [Color(0xFFFF0099), Color(0xFF493240)]),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 5.0),
+            child: new IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () async {
+                await authService.signOut();
+                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+              },
+            ),
+          )
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
