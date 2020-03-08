@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:mycycles/common/constants.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -67,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static Widget _ovulationMarker(String day) => Container(
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Colors.deepOrangeAccent,
           borderRadius: BorderRadius.all(
             Radius.circular(1000),
           ),
@@ -87,26 +88,29 @@ class _MainScreenState extends State<MainScreen> {
     cHeight = MediaQuery.of(context).size.height;
 
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
+      thisMonthDayBorderColor: Colors.transparent,
+      selectedDayButtonColor: Color(0xFF30A9B2),
+      selectedDayBorderColor: Color(0xFF30A9B2),
+      selectedDayTextStyle: TextStyle(color: Colors.white),
+      weekendTextStyle: TextStyle(color: Colors.white),
+      daysTextStyle: TextStyle(color: Colors.white),
+      nextDaysTextStyle: TextStyle(color: Colors.grey),
+      prevDaysTextStyle: TextStyle(color: Colors.grey),
+      weekdayTextStyle: TextStyle(color: Colors.grey),
+      weekDayFormat: WeekdayFormat.short,
+      firstDayOfWeek: 0,
+      showHeader: true,
+      isScrollable: false,
+      weekFormat: false,
       height: cHeight * 0.54,
-      weekendTextStyle: TextStyle(
-        color: Colors.black,
-      ),
+      selectedDateTime: DateTime.now(),
+      customGridViewPhysics: NeverScrollableScrollPhysics(),
 
-      markedDateCustomTextStyle: TextStyle(
-        color: Colors.indigo, // here
-        fontWeight: FontWeight.bold,
-      ),
-
-      /// Header weekday style
-      headerTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
-      weekdayTextStyle: TextStyle(color: Colors.black),
-      inactiveDaysTextStyle: TextStyle(
-        color: Colors.tealAccent,
-        fontSize: 16,
-      ),
-
-      /// Today style
-      todayButtonColor: Colors.grey,
+      /// Headers styling
+      headerTextStyle: TextStyle(fontSize: 20.0, color: Colors.white),
+      prevMonthDayBorderColor: Colors.white,
+      leftButtonIcon: Icon(Icons.navigate_before, color: Colors.white),
+      rightButtonIcon: Icon(Icons.navigate_next, color: Colors.white),
 
       /// Events marker style
       markedDatesMap: _markedDateMap,
@@ -123,18 +127,24 @@ class _MainScreenState extends State<MainScreen> {
         child: Icon(Icons.add),
         onPressed: () {},
       ),
-      body: ListView(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              _calendarCarouselNoHeader,
-              markerRepresent(Colors.pink, "Mens"),
-              markerRepresent(Colors.yellow, "Ovulation"),
-            ],
-          )
-        ],
+      body: Container(
+        color: kMainColor,
+        child: ListView(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
+                  child: _calendarCarouselNoHeader,
+                ),
+                markerRepresent(Colors.pink, "Mens"),
+                markerRepresent(Colors.deepOrangeAccent, "Ovulation"),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -148,6 +158,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       title: new Text(
         data,
+        style: TextStyle(color: Colors.white),
       ),
     );
   }

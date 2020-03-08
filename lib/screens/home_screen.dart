@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:mycycles/screens/main_screen.dart';
 import 'package:mycycles/screens/profile_screen.dart';
 import 'package:mycycles/screens/settings_screen.dart';
@@ -28,9 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: GradientAppBar(
         centerTitle: true,
         elevation: 1.0,
+        gradient: LinearGradient(colors: [Color(0xFFFF0099), Color(0xFF493240)]),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
