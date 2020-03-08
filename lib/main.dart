@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mycycles/screens/home_screen.dart';
+import 'package:mycycles/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Cycles',
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => LoginScreen(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),

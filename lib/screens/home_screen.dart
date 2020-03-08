@@ -6,6 +6,8 @@ import 'package:mycycles/screens/settings_screen.dart';
 import 'package:mycycles/screens/summary_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const String id = '/home';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
