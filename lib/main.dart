@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => LoginScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
