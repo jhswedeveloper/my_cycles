@@ -69,6 +69,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return user;
   }
 
+  Future<FirebaseUser> register() async {
+    FirebaseUser user;
+    try {
+      user = await authService.signUp(_email, _password);
+      print('Signed in: ${user.email}');
+    } catch (e) {
+      print('Error: $e');
+    }
+    return user;
+  }
+
   void moveToRegister() {
     setState(() {
       _formType = FormType.register;
@@ -112,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             onChanged: (val) {
               setState(() {
-                _email = val;
+                _email = val.trim();
               });
             },
           ),
@@ -240,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          var user = await login();
+          var user = await register();
           if (user != null) {
             Navigator.pushReplacementNamed(context, HomeScreen.id);
           }
