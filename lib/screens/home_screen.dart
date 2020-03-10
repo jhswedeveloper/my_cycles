@@ -19,8 +19,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   AuthService authService = AuthService();
+  String _appBartitle;
+
+  @override
+  void initState() {
+    super.initState();
+    _appBartitle = 'Period Calendar';
+  }
 
   void _onItemTapped(int index) {
+    if (index == 0) {
+      _appBartitle = 'Period Calendar';
+    }
+    if (index == 1) {
+      _appBartitle = 'Summary';
+    }
+    if (index == 2) {
+      _appBartitle = 'Profile';
+    }
+    if (index == 3) {
+      _appBartitle = 'Settings';
+    }
+
     setState(() {
       _selectedIndex = index;
     });
@@ -38,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: MainAppBar(title: 'Period Calendar',),
+        child: MainAppBar(title: _appBartitle),
       ),
       drawer: MenuDrawer(),
       body: Center(

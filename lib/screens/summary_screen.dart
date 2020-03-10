@@ -8,6 +8,7 @@ import 'package:mycycles/components/summary_card.dart';
 import 'package:mycycles/components/summary_line_chart.dart';
 import 'package:mycycles/screens/profile_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class SummaryScreen extends StatefulWidget {
   @override
