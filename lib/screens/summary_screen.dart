@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:mycycles/components/summary_card.dart';
 import 'package:mycycles/screens/profile_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -35,70 +36,18 @@ class _SummaryScreenState extends State<SummaryScreen> {
         mainAxisSpacing: 12.0,
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         children: <Widget>[
-          _buildTile(
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      child: CircularPercentIndicator(
-                        radius: 120.0,
-                        lineWidth: 13.0,
-                        animation: true,
-                        percent: 0.7,
-                        center: new Text(
-                          "20 DAYS",
-                          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-                        ),
-                        header: Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: new Text(
-                            "Cycle length",
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-                          ),
-                        ),
-                        circularStrokeCap: CircularStrokeCap.round,
-                        progressColor: Colors.pink,
-                      ),
-                    ),
-                  ]),
-            ),
+          SummaryCard(
+            title: "Cycle length",
+            summary: "20 DAYS",
+            percentage: 0.7,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen())),
           ),
-          _buildTile(
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      child: CircularPercentIndicator(
-                        radius: 120.0,
-                        lineWidth: 13.0,
-                        animation: true,
-                        percent: 0.2,
-                        center: new Text(
-                          "3 DAYS",
-                          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-                        ),
-                        header: Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: new Text(
-                            "Period length",
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-                          ),
-                        ),
-                        circularStrokeCap: CircularStrokeCap.round,
-                        progressColor: Colors.pink,
-                      ),
-                    ),
-                  ]),
-            ),
+          SummaryCard(
+            title: "Period length",
+            summary: "3 DAYS",
+            percentage: 0.2,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen())),
-          )
+          ),
         ],
         staggeredTiles: [
           StaggeredTile.extent(1, 220.0),

@@ -32,6 +32,7 @@ dependencies:
   provider: ^4.0.3
   flutter_facebook_login: ^3.0.0
   font_awesome_flutter: 8.4.0
+  fl_chart: ^0.8.3
 
 
 
