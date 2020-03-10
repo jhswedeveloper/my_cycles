@@ -103,7 +103,9 @@ class _MainScreenState extends State<MainScreen> {
       isScrollable: false,
       weekFormat: false,
       height: cHeight * 0.51,
-      selectedDateTime: DateTime.now(),
+//      selectedDateTime: DateTime.now().subtract(Duration(days: 1)),
+      todayButtonColor: Colors.black12,
+      todayBorderColor: Colors.black12,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
 
       /// Headers styling
