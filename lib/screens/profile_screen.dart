@@ -8,9 +8,10 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool isLoading = false;
-  DateTime _dob = DateTime.now();
+  DateTime _dob = DateTime(DateTime.now().year - 29, DateTime.now().month, DateTime.now().day);
   String _email = 'junhuhdev@gmail.com';
   String _name = 'Jun Huh';
+  String _gender = 'MALE';
 
   Future selectDate(BuildContext context) async {
     setState(() {
@@ -25,9 +26,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (picked != null && picked != _dob) {
       setState(() {
         _dob = picked;
-        isLoading = false;
       });
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -72,15 +75,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       selectDate(context);
                     },
                   ),
-                  SizedBox(height: 20.0),
+                  DropdownButtonFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.sentiment_satisfied),
+                      labelText: 'Gender',
+                      hintText: 'Select your gender',
+                    ),
+                    value: _gender,
+                    isExpanded: true,
+                    isDense: true,
+                    items: ['MALE', 'FEMALE'].map((val) {
+                      return DropdownMenuItem<String>(
+                        value: val,
+                        child: Text(val),
+                      );
+                    }).toList(),
+                    onChanged: (val) {
+                      setState(() {
+                        _gender = val;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 40.0),
                   RaisedButton(
-                    color: Colors.pink,
+                    padding: EdgeInsets.all(15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
                     child: Text(
                       'Save Changes',
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {},
+                  ),
+                  SizedBox(height: 10.0),
+                  RaisedButton(
+                    padding: EdgeInsets.all(15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    color: Colors.deepPurple,
+                    child: Text(
+                      'Delete Account',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {},
                   )
+
                 ],
               ),
             ),

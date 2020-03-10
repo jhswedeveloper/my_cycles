@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         },
         theme: ThemeData(
           brightness: Brightness.dark,
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.cyan,
+          fontFamily: 'OpenSans'
         ),
       ),
     );
