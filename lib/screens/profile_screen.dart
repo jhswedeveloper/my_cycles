@@ -96,6 +96,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       });
                     },
                   ),
+                  SizedBox(height: 5.0),
+                  SwitchListTile(
+                    activeColor: Colors.white,
+                    title: Text('Birth Control'),
+                    contentPadding: EdgeInsets.all(0.0),
+                    secondary: Icon(Icons.pregnant_woman),
+                    value: true,
+                    selected: true,
+                    onChanged: (v) {
+
+                    },
+                  ),
                   SizedBox(height: 40.0),
                   RaisedButton(
                     padding: EdgeInsets.all(15.0),
@@ -121,7 +133,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     onPressed: () {},
                   )
-
                 ],
               ),
             ),
