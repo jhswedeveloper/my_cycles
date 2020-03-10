@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:mycycles/common/constants.dart';
+import 'package:mycycles/components/main_app_bar.dart';
+import 'package:mycycles/components/menu_drawer.dart';
 import 'package:mycycles/components/summary_card.dart';
 import 'package:mycycles/components/summary_line_chart.dart';
 import 'package:mycycles/screens/profile_screen.dart';
@@ -15,8 +17,8 @@ class SummaryScreen extends StatefulWidget {
 class _SummaryScreenState extends State<SummaryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StaggeredGridView.count(
+    return Scaffold(
+      body: StaggeredGridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 12.0,

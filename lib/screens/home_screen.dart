@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:mycycles/components/main_app_bar.dart';
 import 'package:mycycles/components/menu_drawer.dart';
 import 'package:mycycles/screens/main_screen.dart';
 import 'package:mycycles/screens/profile_screen.dart';
@@ -35,23 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 1.0,
-        title: Text('My Cycles',
-            style: TextStyle(fontFamily: 'OpenSans', fontSize: 18.0, fontWeight: FontWeight.bold, letterSpacing: 3)),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0),
-            child: new IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () async {
-                await authService.signOut();
-                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
-              },
-            ),
-          )
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: MainAppBar(title: 'Period Calendar',),
       ),
       drawer: MenuDrawer(),
       body: Center(
