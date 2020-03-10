@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:mycycles/common/constants.dart';
 import 'package:mycycles/components/summary_card.dart';
 import 'package:mycycles/components/summary_line_chart.dart';
 import 'package:mycycles/screens/profile_screen.dart';
@@ -14,22 +15,24 @@ class SummaryScreen extends StatefulWidget {
 class _SummaryScreenState extends State<SummaryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StaggeredGridView.count(
+    return Container(
+      child: StaggeredGridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 12.0,
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         children: <Widget>[
           SummaryCard(
-            title: "Cycle length",
-            summary: "20 DAYS",
+            title: "Cycle Length",
+            summaryTitle: "DAYS",
+            summary: "20",
             percentage: 0.7,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen())),
           ),
           SummaryCard(
-            title: "Period length",
-            summary: "3 DAYS",
+            title: "Period Length",
+            summaryTitle: "DAYS",
+            summary: "3",
             percentage: 0.2,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen())),
           ),
