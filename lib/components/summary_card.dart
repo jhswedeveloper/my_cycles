@@ -65,7 +65,7 @@ class _SummaryCardState extends State<SummaryCard> {
                     ],
                   ),
                   circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Colors.blueAccent,
+                  progressColor: Colors.cyan,
                 ),
               ),
             ],

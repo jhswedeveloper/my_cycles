@@ -44,7 +44,7 @@ class _SummaryLineChartState extends State<SummaryLineChart> {
                   height: 37,
                 ),
                 Text(
-                  'Mood/Energy/Wellbeing 2020',
+                  'Mood & Energy last 3 months',
                   style: TextStyle(
                     color: const Color(0xff827daa),
                     fontSize: 16,
@@ -56,7 +56,7 @@ class _SummaryLineChartState extends State<SummaryLineChart> {
                 ),
                 Text(
                   'Monthly Levels',
-                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 2),
+                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 2),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(

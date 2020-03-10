@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static Widget _periodMarker(String day) => Container(
         decoration: BoxDecoration(
-          color: Colors.pink,
+          color: Colors.pink[500],
           borderRadius: BorderRadius.all(
             Radius.circular(1000),
           ),
@@ -68,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static Widget _ovulationMarker(String day) => Container(
         decoration: BoxDecoration(
-          color: Colors.deepOrangeAccent,
+          color: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.all(
             Radius.circular(1000),
           ),
@@ -98,11 +98,11 @@ class _MainScreenState extends State<MainScreen> {
       prevDaysTextStyle: TextStyle(color: Colors.grey),
       weekdayTextStyle: TextStyle(color: Colors.grey),
       weekDayFormat: WeekdayFormat.short,
-      firstDayOfWeek: 0,
+      firstDayOfWeek: 1,
       showHeader: true,
       isScrollable: false,
       weekFormat: false,
-      height: cHeight * 0.54,
+      height: cHeight * 0.51,
       selectedDateTime: DateTime.now(),
       customGridViewPhysics: NeverScrollableScrollPhysics(),
 
@@ -128,7 +128,6 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {},
       ),
       body: Container(
-//        color: Colors.black12,
         child: ListView(
           children: <Widget>[
             Column(
@@ -136,11 +135,12 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
                   child: _calendarCarouselNoHeader,
                 ),
-                markerRepresent(Colors.pink, "Period"),
-                markerRepresent(Colors.deepOrangeAccent, "Ovulation"),
+                markerRepresent(Colors.pink[500], "Period"),
+                markerRepresent(Colors.deepPurpleAccent, "Ovulation"),
+                markerRepresent(Colors.cyan, "PMS"),
               ],
             )
           ],
@@ -149,15 +149,15 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget markerRepresent(Color color, String data) {
+  Widget markerRepresent(Color color, String markerText) {
     return new ListTile(
       dense: true,
       leading: new CircleAvatar(
         backgroundColor: color,
-        radius: cHeight * 0.018,
+        radius: cHeight * 0.015,
       ),
       title: new Text(
-        data,
+        markerText,
         style: TextStyle(color: Colors.white),
       ),
     );
