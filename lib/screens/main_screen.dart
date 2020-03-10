@@ -128,7 +128,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {},
       ),
       body: Container(
-        color: kMainColor,
+//        color: Colors.black12,
         child: ListView(
           children: <Widget>[
             Column(
