@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
           HomeScreen.id: (context) => HomeScreen(),
         },
         theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
+          brightness: Brightness.dark,
+          primarySwatch: Colors.blue,
         ),
       ),
     );

@@ -139,7 +139,7 @@ class _MainScreenState extends State<MainScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
                   child: _calendarCarouselNoHeader,
                 ),
-                markerRepresent(Colors.pink, "Mens"),
+                markerRepresent(Colors.pink, "Period"),
                 markerRepresent(Colors.deepOrangeAccent, "Ovulation"),
               ],
             )

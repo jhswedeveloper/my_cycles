@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:mycycles/screens/main_screen.dart';
@@ -33,10 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(
+      appBar: AppBar(
         centerTitle: true,
         elevation: 1.0,
-        gradient: LinearGradient(colors: [Color(0xFFFF0099), Color(0xFF493240)]),
+        title: Text('My Cycles',
+            style: TextStyle(fontFamily: 'OpenSans', fontSize: 20.0, fontWeight: FontWeight.bold, letterSpacing: 2)),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 5.0),
@@ -53,8 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+      bottomNavigationBar: CupertinoTabBar(
+        backgroundColor: Colors.black54,
+        inactiveColor: Colors.white54,
+        activeColor: Colors.white,
+        iconSize: 24.0,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
